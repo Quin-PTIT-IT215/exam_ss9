@@ -49,7 +49,7 @@ def get_all_list():
 @app.post("/tickets", tags=["tickets"])
 def create_ticket(ticket: TicketsSchema):
 
-    # Kiểm tra trùng phim và phòng chiếu
+    
     for tick in tickets_db:
         if (
             tick["movie_name"] == ticket.movie_name
@@ -60,7 +60,7 @@ def create_ticket(ticket: TicketsSchema):
                 detail="Lỗi: Vé xem phim tại phòng chiếu này đã được đặt!"
             )
 
-    # Sinh ID mới
+    
     id_tick = len(tickets_db) + 1
 
     new_ticket = ticket.model_dump()
